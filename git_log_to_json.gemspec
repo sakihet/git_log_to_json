@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["saki"]
   spec.email         = ["sakihet@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{print git log in json}
+  spec.description   = %q{print git log in json}
+  spec.homepage      = "https://github.com/sakihet/git_log_to_json"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
