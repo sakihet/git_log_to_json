@@ -2,6 +2,7 @@
 
 print git log in json
 
+[![Gem Version](https://badge.fury.io/rb/git_log_to_json.svg)](https://badge.fury.io/rb/git_log_to_json)
 
 ## Installation
 
