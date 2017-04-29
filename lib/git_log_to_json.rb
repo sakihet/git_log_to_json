@@ -6,6 +6,7 @@ module GitLogToJson
   option = {}
   OptionParser.new do |opt|
     opt.on('--version', 'show version') { |v| option[:version] = v }
+    opt.on('-n', '--number [NUM]', Integer, '') { |v| option[:number] = v }
     # TODO
     # opt.on('--hash') { |v| option[:hash] = v }
     # opt.on('--name') { |v| option[:name] = v }
@@ -18,11 +19,18 @@ module GitLogToJson
     puts GitLogToJson::VERSION
   end
 
-  def self.print_json(dir)
+  def self.print_json(dir, option)
     Dir.chdir(dir) do
       format_opts = ['%H', '%an', '%ad', '%s']
       format = format_opts.join('%x0b') + '%x07'
-      git_log = `git log --pretty=format:\"#{format}\"`
+      cmd_base = 'git log '
+      cmd_opts = ''
+      if option[:number]
+        cmd_opts += "-n #{option[:number]} "
+      end
+      cmd_opts += "--pretty=format:\"#{format}\""
+      cmd = cmd_base + cmd_opts
+      git_log = `#{cmd}`
       ary = []
       keys = [:hash, :author_name, :author_date, :subject]
       git_log.split("\a").each do |line|
@@ -45,6 +53,6 @@ module GitLogToJson
   if option[:version]
     version
   else
-    print_json(ARGV[0])
+    print_json(ARGV[0], option)
   end
 end
