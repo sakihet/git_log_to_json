@@ -5,13 +5,15 @@ print git log in json
 
 ## Installation
 
-    $ gem install git_log_to_json
+```
+gem install git_log_to_json
+```
 
 
 ## Usage
 
 ```
-git_log_to_json <some git repo>
+git_log_to_json <path-to-git-repo>
 ```
 
 
